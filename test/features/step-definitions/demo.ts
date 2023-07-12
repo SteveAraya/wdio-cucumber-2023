@@ -33,3 +33,33 @@ Then(/^URL should match (.*)$/, async function(expectedURL){
     chai.expect(url).to.equal(expectedURL)
 
 })
+
+/**
+ * Web Interactions
+ */
+
+Given(/^A web page is opened$/, async function(){
+
+    await browser.url("/inputs");
+    await browser.setTimeout({ implicit: 15000, pageLoad: 10000 });
+    await browser.maximizeWindow();
+
+})
+
+When(/^Perform web interactions$/, async function(){
+
+    let num = 12345;
+    let strNum = num.toString();
+
+    let elem = await $(`[type=number]`);
+    await elem.click();
+
+    for (let i = 0; i < strNum.length; i++) {
+
+        let charStr = strNum.charAt(i);
+        await browser.pause();
+        await browser.keys(charStr);
+
+    }
+
+})
