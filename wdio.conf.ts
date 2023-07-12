@@ -66,7 +66,7 @@ export const config: Options.Testrunner = {
         // capabilities for local browser web tests
         browserName: 'chrome', // or "firefox", "microsoftedge", "safari"
         'goog:chromeOptions': {
-            args: ['headless', 'disable-gpu']
+            args: ['--headless', '--no-sandbox', 'disable-gpu']
         }
     }],
     //
